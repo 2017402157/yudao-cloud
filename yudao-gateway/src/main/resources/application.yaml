@@ -216,6 +216,13 @@ spring:
                 - Path=/admin-api/im/**
               filters:
                 - RewritePath=/admin-api/im/v3/api-docs, /v3/api-docs # 配置，保证转发到 /v3/api-docs
+            ## MaaS: maas-server 模型目录服务
+            - id: maas-admin-api # 路由的编号
+              uri: grayLb://maas-server
+              predicates:
+                - Path=/admin-api/maas/**
+              filters:
+                - RewritePath=/admin-api/maas/v3/api-docs, /v3/api-docs
             ## MaaS: new-api AI 网关服务
             - id: maas-new-api-relay
               uri: http://new-api:3000
@@ -303,6 +310,9 @@ knife4j:
       - name: im-server
         service-name: im-server
         url: /admin-api/im/v3/api-docs
+      - name: maas-server
+        service-name: maas-server
+        url: /admin-api/maas/v3/api-docs
 
 --- #################### 芋道相关配置 ####################
 
@@ -316,5 +326,7 @@ maas:
   jwt:
     secret: ${MAAS_JWT_SECRET:maas-default-secret-change-in-production-32chars!!}
     expiry-seconds: ${MAAS_JWT_EXPIRY_SECONDS:7200}
+  webhook:
+    secret: ${MAAS_WEBHOOK_SECRET:}
   oidc:
     issuer: ${MAAS_OIDC_ISSUER:http://localhost:48080}
