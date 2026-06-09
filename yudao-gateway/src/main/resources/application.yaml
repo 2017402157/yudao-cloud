@@ -316,3 +316,5 @@ maas:
   jwt:
     secret: ${MAAS_JWT_SECRET:maas-default-secret-change-in-production-32chars!!}
     expiry-seconds: ${MAAS_JWT_EXPIRY_SECONDS:7200}
+  oidc:
+    issuer: ${MAAS_OIDC_ISSUER:http://localhost:48080}
