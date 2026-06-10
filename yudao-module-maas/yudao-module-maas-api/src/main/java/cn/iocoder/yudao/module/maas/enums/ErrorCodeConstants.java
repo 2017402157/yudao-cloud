@@ -18,4 +18,11 @@ public interface ErrorCodeConstants {
     ErrorCode MAAS_WEBHOOK_SIGN_INVALID = new ErrorCode(1_020_002_000, "Webhook 签名验证失败");
     ErrorCode MAAS_WEBHOOK_EVENT_UNSUPPORTED = new ErrorCode(1_020_002_001, "不支持的 Webhook 事件类型");
 
+    // ========== API Key 1-020-003-000 ==========
+    ErrorCode MAAS_API_KEY_NOT_EXISTS = new ErrorCode(1_020_003_000, "API Key 不存在");
+    ErrorCode MAAS_API_KEY_DISABLED = new ErrorCode(1_020_003_001, "API Key 已禁用");
+    ErrorCode MAAS_API_KEY_EXPIRED = new ErrorCode(1_020_003_002, "API Key 已过期");
+    ErrorCode MAAS_API_KEY_QUOTA_EXCEEDED = new ErrorCode(1_020_003_003, "API Key 配额已用尽");
+    ErrorCode MAAS_API_KEY_MODEL_NOT_ALLOWED = new ErrorCode(1_020_003_004, "API Key 不允许使用该模型");
+
 }
