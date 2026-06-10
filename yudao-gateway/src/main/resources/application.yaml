@@ -242,6 +242,13 @@ spring:
                 - Path=/maas/**
               filters:
                 - RewritePath=/maas/(?<segment>.*), /${segment}
+            ## MaaS: ragflow RAG API 代理
+            - id: maas-ragflow-api
+              uri: http://ragflow-api:9382
+              predicates:
+                - Path=/maas/ragflow/**
+              filters:
+                - RewritePath=/maas/ragflow/(?<segment>.*), /api/v1/${segment}
           x-forwarded:
             prefix-enabled: false # 避免 Swagger 重复带上额外的 /admin-api/system 前缀
           default-filters:
